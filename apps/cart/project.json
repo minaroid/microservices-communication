@@ -1,7 +1,7 @@
 {
-  "name": "users",
+  "name": "cart",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/users/src",
+  "sourceRoot": "apps/cart/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -11,13 +11,12 @@
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/apps/users",
-        "main": "apps/users/src/main.ts",
-        "tsConfig": "apps/users/tsconfig.app.json",
-        "assets": ["apps/users/src/assets"],
-        "generatePackageJson": true,
+        "outputPath": "dist/apps/cart",
+        "main": "apps/cart/src/main.ts",
+        "tsConfig": "apps/cart/tsconfig.app.json",
+        "assets": ["apps/cart/src/assets"],
         "isolatedConfig": true,
-        "webpackConfig": "apps/users/webpack.config.js"
+        "webpackConfig": "apps/cart/webpack.config.js"
       },
       "configurations": {
         "development": {},
@@ -28,14 +27,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "users:build"
+        "buildTarget": "cart:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "users:build:development"
+          "buildTarget": "cart:build:development"
         },
         "production": {
-          "buildTarget": "users:build:production"
+          "buildTarget": "cart:build:production"
         }
       }
     },
@@ -43,14 +42,14 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/users/**/*.ts"]
+        "lintFilePatterns": ["apps/cart/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/users/jest.config.ts",
+        "jestConfig": "apps/cart/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
