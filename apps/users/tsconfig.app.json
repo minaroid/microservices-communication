@@ -16,5 +16,5 @@
   ],
   "include": [
     "src/**/*.ts"
-  ]
+, "../../kafka/src/lib/parse-message.pipe.ts", "../../kafka/src/lib/message.dto.ts"  ]
 }

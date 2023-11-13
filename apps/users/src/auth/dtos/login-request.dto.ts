@@ -6,5 +6,10 @@ export class LoginRequestDto {
 
   @IsString()
   @IsNotEmpty()
+  readonly age: string;
+
+
+  @IsString()
+  @IsNotEmpty()
   readonly password: string;
 }

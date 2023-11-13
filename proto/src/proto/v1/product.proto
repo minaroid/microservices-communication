@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package v1.product;
+
+service ProductService {
+    // unary API
+    rpc GetProductById(GetProductByIdRequest) returns (GetProductByIdResponse) {}
+
+}
+
+message GetProductByIdRequest{
+    int32 id = 1;
+}
+
+message Product{
+    int32 id = 1;
+    int32 quantity = 2;
+    int32 price = 3;
+    string name = 4;
+}
+
+message GetProductByIdResponse {
+    int32 status = 1;  // 200 || 404
+    Product product = 2;
+}

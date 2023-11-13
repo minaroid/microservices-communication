@@ -18,6 +18,7 @@ export interface VerificationRequest {
 
 export interface Profile {
   userName: string;
+  age: string;
 }
 
 export interface VerificationResponse {
@@ -84,13 +85,16 @@ export const VerificationRequest = {
 };
 
 function createBaseProfile(): Profile {
-  return { userName: "" };
+  return { userName: "", age: "" };
 }
 
 export const Profile = {
   encode(message: Profile, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.userName !== "") {
       writer.uint32(10).string(message.userName);
+    }
+    if (message.age !== "") {
+      writer.uint32(18).string(message.age);
     }
     return writer;
   },
@@ -109,6 +113,13 @@ export const Profile = {
 
           message.userName = reader.string();
           continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
+
+          message.age = reader.string();
+          continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -119,13 +130,19 @@ export const Profile = {
   },
 
   fromJSON(object: any): Profile {
-    return { userName: isSet(object.userName) ? globalThis.String(object.userName) : "" };
+    return {
+      userName: isSet(object.userName) ? globalThis.String(object.userName) : "",
+      age: isSet(object.age) ? globalThis.String(object.age) : "",
+    };
   },
 
   toJSON(message: Profile): unknown {
     const obj: any = {};
     if (message.userName !== "") {
       obj.userName = message.userName;
+    }
+    if (message.age !== "") {
+      obj.age = message.age;
     }
     return obj;
   },
@@ -136,6 +153,7 @@ export const Profile = {
   fromPartial<I extends Exact<DeepPartial<Profile>, I>>(object: I): Profile {
     const message = createBaseProfile();
     message.userName = object.userName ?? "";
+    message.age = object.age ?? "";
     return message;
   },
 };

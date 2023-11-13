@@ -1,2 +1,4 @@
 // V1
-export * from './gen/src/proto/v1/auth';
+export * as Product from './gen/src/proto/v1/product';
+export * as Auth  from './gen/src/proto/v1/auth';
+

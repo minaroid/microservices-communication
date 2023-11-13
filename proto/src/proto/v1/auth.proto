@@ -5,6 +5,7 @@ package v1.auth;
 service AuthService {
     // unary API
     rpc Verify(VerificationRequest) returns (VerificationResponse) {}
+
 }
 
 message VerificationRequest{
@@ -13,6 +14,7 @@ message VerificationRequest{
 
 message Profile{
     string userName = 1;
+    string age = 2;
 }
 
 message VerificationResponse {

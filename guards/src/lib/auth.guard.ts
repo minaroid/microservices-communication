@@ -1,8 +1,6 @@
 import { ServiceError, credentials } from '@grpc/grpc-js';
 import {
-  AuthServiceClient,
-  VerificationRequest,
-  VerificationResponse,
+ Auth,
 } from '@microservices-communication/proto';
 import {
   CanActivate,
@@ -15,20 +13,20 @@ import { Request } from 'express';
 
 @Injectable()
 export class AuthGuard implements CanActivate, OnModuleInit {
-  private client: AuthServiceClient;
+  private client: Auth.AuthServiceClient;
 
   onModuleInit() {
-    this.client = new AuthServiceClient(
+    this.client = new Auth.AuthServiceClient(
       process.env.USERS_SERVICE_GRPC,
       credentials.createInsecure()
     );
   }
 
-  private verify = (token: string): Promise<VerificationResponse> => {
+  private verify = (token: string): Promise<Auth.VerificationResponse> => {
     return new Promise((resolve, reject) => {
       this.client.verify(
-        VerificationRequest.fromJSON({ token }),
-        (error: ServiceError, response: VerificationResponse) => {
+        Auth.VerificationRequest.fromJSON({ token }),
+        (error: ServiceError, response: Auth.VerificationResponse) => {
           if (error) {
             reject(error);
           } else {

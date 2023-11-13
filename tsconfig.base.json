@@ -15,7 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@microservices-communication/proto": ["proto/src/index.ts"]
+      "@microservices-communication/entities": ["entities/src/index.ts"],
+      "@microservices-communication/guards": ["guards/src/index.ts"],
+      "@microservices-communication/kafka": ["kafka/src/index.ts"],
+      "@microservices-communication/models": ["models/src/index.ts"],
+      "@microservices-communication/proto": ["proto/src/index.ts"],
+      "@microservices-communication/shared": ["shared/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
